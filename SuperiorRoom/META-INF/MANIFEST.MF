@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SuperiorRoom
+Bundle-SymbolicName: SuperiorRoom
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: superiorroom.SuperiorRoomActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-15
+Automatic-Module-Name: SuperiorRoom
+Import-Package: org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: superiorroom
