@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: BuffetService
+Bundle-SymbolicName: BuffetService
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: buffetservice.BuffetServiceActivator
+Automatic-Module-Name: BuffetService
+Import-Package: bufferinfopublisher,
+ buffetpublisher,
+ org.osgi.framework;version="1.3.0",
+ org.osgi.util.tracker;version="1.3.1"
+Bundle-ActivationPolicy: lazy
