@@ -1,0 +1,23 @@
+package bus_hire;
+
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceRegistration;
+
+public class BikeActivator implements BundleActivator {
+
+	ServiceRegistration serviceRegistration;
+
+	public void start(BundleContext context) throws Exception {
+		System.out.println("Bike rent Service Started");
+		BikePublish bikePublish = new BikePublishImpl();
+		serviceRegistration = context.registerService(BikePublish.class.getName(), bikePublish, null);
+		
+	}
+
+	public void stop(BundleContext context) throws Exception {
+		System.out.println("Bike rent service stop");
+		serviceRegistration.unregister();
+	}
+
+}

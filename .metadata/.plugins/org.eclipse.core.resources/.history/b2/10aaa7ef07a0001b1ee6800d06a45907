@@ -1,0 +1,64 @@
+package consumer;
+
+import java.util.Scanner;
+
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+import org.osgi.framework.ServiceRegistration;
+
+
+import rent_bike.BikePublish;
+import rent_car.CarPublish;
+
+public class ConsumerActivator implements BundleActivator {
+	
+	ServiceReference serviceReference;
+
+	public void start(BundleContext context) throws Exception {
+		System.out.println("Consumer Started");
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("=====Welcome to the Vehicle Rent Service=====");
+		System.out.println("1. Bike\n2. Backhoe\n3. lorry\n4. Car");
+		System.out.print("Please Select the Vehcle Type: ");
+		int vehicleType = sc.nextInt();
+		switch(vehicleType) {
+			case 1:
+					serviceReference = context.getServiceReference(BikePublish.class.getName());
+					BikePublish bikePublish = (BikePublish)context.getService(serviceReference);
+					bikePublish.getCarRentDetails();
+			        break;
+			        
+			case 2:
+					serviceReference = context.getServiceReference(BackhoePublish.class.getName());
+					BackhoePublish backhoePublish = (BackhoePublish)context.getService(serviceReference);
+					backhoePublish.getBackhoeRentDetails();
+					break;
+			case 3:
+					serviceReference = context.getServiceReference(LorryPublish.class.getName());
+					LorryPublish lorryPublish = (LorryPublish)context.getService(serviceReference);
+					lorryPublish.getLorryRentDetails();
+					break;
+			case 4: 
+					serviceReference = context.getServiceReference(CarPublish.class.getName());
+					CarPublish carPublish = (CarPublish)context.getService(serviceReference);
+					carPublish.getCarRentDetails();
+					break;
+			
+		}
+		
+	}
+
+	public void stop(BundleContext context) throws Exception {
+		System.out.println("Consumer Stoped");
+		context.ungetService(serviceReference);
+		
+		
+	}
+
+}
+
+
+

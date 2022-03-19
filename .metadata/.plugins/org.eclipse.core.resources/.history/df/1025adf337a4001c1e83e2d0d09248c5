@@ -1,0 +1,114 @@
+package rent_bike;
+
+
+import java.util.Scanner;
+
+
+public class BikePublishImpl implements BikePublish {
+		
+		private final int normal = 900;
+		private final int semiLuxury = 1500;
+		private final int luxury = 2100;
+		
+		private final double minHours = 0.55;
+		private final double maxHours = 0.75;
+		
+		private final double smallTrip = 0.85;
+		private final double bigTrip = 0.65;
+
+
+		private int bikeCC;
+		private int noofDays;
+		private int distance;
+		private double totalbill;		        	
+
+
+			public void BikeReserveHandle(String name) {
+				
+					Scanner sc = new Scanner(System.in);
+					
+						System.out.println("\n----HIRE BUS FOR TRIP----");
+						System.out.println("Select Bus Type:\n 1. Normal\n 2. Semi Luxury\n 3. Luxury ");
+						System.out.print("Select Bus Type:");
+						bikeCC = sc.nextInt();
+						System.out.print("Enter number of Days:");
+						noofDays = sc.nextInt();
+						System.out.print("Hours in a day(<12hours):");
+						distance = sc.nextInt();
+
+						totalbill = calculatetotalbill(bikeCC,noofDays, distance);
+						System.out.println("\n=======Your Bill======");
+						System.out.println("Name: " + name);
+						System.out.println("Your Balance is: Rs." + totalbill);
+						System.out.println("!!!Wear HELMET When You Ride!!!");
+						System.out.println("Thank you for Reservation!!!");
+						System.out.println("Have a Good Journey");
+}
+
+
+			private double calculatetotalbill(int bikeCC, int noofDays, int distance) {
+				// TODO Auto-generated method stub
+				
+					double t = 0;
+					if(bikeCC == 1) {
+						if(noofDays <=15 ) {
+							if(distance <= 12) {
+								t = (minHours * distance * smallTrip * noofDays * normal );
+							}
+							else {
+								t = (minHours * distance * bigTrip * noofDays * normal );
+							}
+						}
+						else {
+							if(distance <= 12) {
+								t = (maxHours * distance * smallTrip * noofDays * normal );
+							}
+							else {
+								t = (maxHours * distance * bigTrip * noofDays * normal );
+							}
+						}
+					}
+					else if (bikeCC == 2) {
+						if(noofDays <=15 ) {
+							if(distance <= 12) {
+								t = (minHours * distance * smallTrip * noofDays * semiLuxury );
+							}
+							else {
+								t = (minHours * distance * bigTrip * noofDays * semiLuxury );
+							}
+						}
+						else {
+							if(distance <= 12) {
+								t = (maxHours * distance * smallTrip * noofDays * semiLuxury );
+							}
+							else {
+								t = (maxHours * distance * bigTrip * noofDays * semiLuxury );
+							}
+						}
+					}
+					else if (bikeCC == 3) {
+						if(noofDays <=15 ) {
+							if(distance <= 12) {
+								t = (minHours * distance * smallTrip * noofDays * luxury );
+							}
+							else {
+								t = (minHours * distance * bigTrip * noofDays * luxury );
+							}
+						}
+						else {
+							if(distance <= 12) {
+								t = (maxHours * distance * smallTrip * noofDays * luxury );
+							}
+							else {
+								t = (maxHours * distance * bigTrip * noofDays * luxury );
+							}
+						}
+					}
+
+					return t;
+			}
+
+
+
+
+}

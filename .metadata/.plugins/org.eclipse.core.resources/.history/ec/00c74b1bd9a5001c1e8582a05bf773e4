@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Rent_Bike
+Bundle-SymbolicName: Bus_Hire
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: bus_hire.BikeActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-15
+Import-Package: org.osgi.framework;version="1.3.0"
+Export-Package: bus_hire

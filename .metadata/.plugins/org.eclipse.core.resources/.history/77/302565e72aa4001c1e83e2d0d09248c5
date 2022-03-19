@@ -1,0 +1,73 @@
+package rent_bike;
+
+
+import java.util.Scanner;
+
+
+public class BikePublishImpl implements BikePublish {
+		private final int lowccPricePeroneKilometer = 45;
+		private final int highccPricePeroneKilometer = 60;
+		private final int lowccBikePerDay = 1500;
+		private final int highccBikePerDay = 2500;
+		private final int Freedistanceperday = 100;
+
+
+
+		private int bikeCC;
+		private int noofDays;
+		private int distance;
+		private double totalbill;
+
+
+			public void BikeReserveHandle(String name) {
+				
+					Scanner sc = new Scanner(System.in);
+					
+						System.out.println("\n----HIRE BUS FOR TRIP----");
+						System.out.println("Select Bus Type:\n 1. Normal\n 2. Semi Luxury\n 3.Luxury ");
+						System.out.print("Enter number of Days:");
+						noofDays = sc.nextInt();
+						System.out.print("Enter Distance(km):");
+						distance = sc.nextInt();
+
+						totalbill = calculatetotalbill(bikeCC,noofDays, distance);
+						System.out.println("\n=======Your Bill======");
+						System.out.println("Name: " + name);
+						System.out.println("Your Balance is: Rs." + totalbill);
+						System.out.println("!!!Wear HELMET When You Ride!!!");
+						System.out.println("Thank you for Reservation!!!");
+						System.out.println("Have a Good Journey");
+}
+
+
+			private double calculatetotalbill(int bikeCC, int noofDays, int distance) {
+				// TODO Auto-generated method stub
+				
+					double t = 0;
+					if(bikeCC == 1) {
+						if(0 < (distance - (noofDays * Freedistanceperday ))) {
+							t = (lowccBikePerDay * noofDays) + ((distance - (noofDays * Freedistanceperday)) * lowccPricePeroneKilometer ) ;
+						}
+						else {
+							t = (lowccBikePerDay * noofDays);
+						}
+					}
+					else if (bikeCC == 2) {
+						if(0 < (distance - (noofDays * Freedistanceperday ) )) {
+							t = (highccBikePerDay * noofDays) + ((distance - (noofDays * Freedistanceperday)) * highccPricePeroneKilometer ) ;
+						}
+						else {
+							t = (highccBikePerDay * noofDays);
+						}
+					}
+					else {
+						System.out.println("INVALID BIKE TYPE");
+					}
+
+					return t;
+			}
+
+
+
+
+}

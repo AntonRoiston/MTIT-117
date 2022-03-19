@@ -1,0 +1,6 @@
+package bus_hire;
+
+public interface BikePublish {
+
+	public void BikeReserveHandle(String name);
+}
